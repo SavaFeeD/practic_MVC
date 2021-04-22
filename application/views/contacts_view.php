@@ -1,4 +1,4 @@
-<section>
+<section class="container pt-5">
 
     <h1>Контакты</h1>
     <p>
@@ -6,3 +6,4 @@
     </p>
 
 </section>
+<?= DB::select('name', 'select') ?>

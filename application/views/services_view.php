@@ -1,4 +1,4 @@
-<section>
+<section class="container pt-5">
 
     <h1>Услуги</h1>
     <div>

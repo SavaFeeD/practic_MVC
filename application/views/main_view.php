@@ -5,7 +5,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="../assets/img/avataaars.svg" alt="..." />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Crazy Tea Party</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -13,8 +13,16 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+            <p class="masthead-subheading font-weight-light mb-0">Developer: Alexandr Shachnev</p>
         </div>
     </header>
 
+    <img src="images/office-small.jpg" alt="office-small.jpg">
+
 </section>
+
+<style>
+img{
+    width: 100%;
+}
+</style>
