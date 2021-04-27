@@ -1,3 +1,5 @@
+<?php require_once "application/components/nav.php"; ?>
+
 <section class="container pt-5">
     <h1>Портфолио</h1>
     <p>
@@ -9,7 +11,7 @@
             <?php
             foreach($data as $row)
             {
-                echo '<tr><td>'.$row['Year'].'</td><td><a href="'.$row['Site'].'">'.$row['Site'].'<a/></td><td>'.$row['Description'].'</td></tr>';
+                echo '<tr><td>'.$row['age'].'</td><td><a href="'.$row['project'].'">'.$row['project'].'</a></td><td>'.$row['desc_project'].'</td></tr>';
             }
             ?>
         </tbody>

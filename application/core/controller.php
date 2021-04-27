@@ -12,4 +12,12 @@ class Controller {
     function action_index()
     {
     }
+
+    function ADMIN()
+    {
+      if (!isset($_SESSION['admin'])) {
+        header('Location: /');
+        die();
+      }
+    }
 }

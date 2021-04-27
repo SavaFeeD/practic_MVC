@@ -1,3 +1,5 @@
+<?php require_once "application/components/nav.php"; ?>
+
 <section>
 
     <header class="masthead bg-primary text-white text-center">
@@ -24,5 +26,9 @@
 <style>
 img{
     width: 100%;
+}
+section{
+  margin-top: -100px;
+  margin-bottom: 0!important;
 }
 </style>

@@ -1,3 +1,5 @@
+<?php require_once "application/components/nav.php"; ?>
+
 <section class="container pt-5">
 
     <h1>Услуги</h1>

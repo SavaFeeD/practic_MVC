@@ -25,9 +25,12 @@ class DB
         }
     }
 
-    public static function select($col, $table) {
-        $stmt = self::$pdo->query('SELECT ? FROM ?');
-        $stmt->execute($col, $table);
-        return $stmt->fetch();
+    public static function query($sql) {
+        try {
+            $stmt = self::$pdo->query($sql);
+        } catch (PDOException $e) {
+            return "Error!: " . $e->getMessage() . "<br/>";
+        }
+        return $stmt->fetchAll();
     }
 }

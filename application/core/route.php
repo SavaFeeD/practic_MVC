@@ -8,17 +8,16 @@ class Route
         $action_name = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
-
         // получаем имя контроллера
         if ( !empty($routes[1]) )
         {
-            $controller_name = $routes[1];
+            $controller_name = explode('?', $routes[1])[0];
         }
 
         // получаем имя экшена
         if ( !empty($routes[2]) )
         {
-            $action_name = $routes[2];
+            $action_name = explode('?', $routes[2])[0];
         }
 
         // добавляем префиксы
@@ -76,4 +75,3 @@ class Route
         header('Location:'.$host.'404');
     }
 }
-
