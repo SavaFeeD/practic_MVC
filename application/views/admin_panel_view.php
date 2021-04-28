@@ -28,8 +28,12 @@
             foreach ($data_table as $fillable_arr):
            ?>
             <tr>
-              <?php foreach ($fillable_arr as $fillable_data): ?>
-                <td><?= $fillable_data ?></td>
+              <?php foreach ($fillable_arr as $fillable_name => $fillable_data): ?>
+                <?php if ($fillable_name == 'img'): ?>
+                  <td><img class="img-fluid w-100" src="../uploads/<?= $fillable_data ?>" alt="img_<?= $fillable_data ?>"</td>
+                <?php else: ?>
+                  <td><?= $fillable_data ?></td>
+                <?php endif; ?>
               <?php endforeach; ?>
                 <td class="d-flex justify-content-center align-items-center border-left">
                     <a class="btn btn-danger mr-3" href="/admin/delete?table=<?= $table_name ?>&id=<?= $fillable_arr['id'] ?>"><i class="far fa-trash-alt"></i></a>

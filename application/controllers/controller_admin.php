@@ -43,6 +43,7 @@ class Controller_Admin extends Controller
 
         if ($is_admin == 2) {
             $_SESSION['admin'] = $_POST['email'];
+            $_SESSION['user'] = $this->model->is_user($_POST['email'], $_POST['password']);;
             $data = $this->model->get_data();
             $this->view->generate('admin_panel_view.php', 'template_view.php', $data);
         } else {
@@ -64,28 +65,8 @@ class Controller_Admin extends Controller
     function action_add()
     {
       $this->ADMIN();
-      $cols = [];
-      $values = [];
 
-      foreach ($_POST as $key => $value) {
-        if ($key != 'table' && $key != 'id') {
-          array_push($cols, $key);
-          array_push($values, '"'.$value.'"');
-        }
-      }
-
-      if (isset($_FILES['img'])) {
-        $uploaddir = 'uploads/';
-        $uploadfile = $uploaddir . basename($_FILES['img']['name']);
-        move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile);
-        array_push($cols, 'img');
-        array_push($values, '"'.$_FILES['img']['name'].'"');
-      }
-
-      $cols = implode(', ', $cols);
-      $values = implode(', ', $values);
-
-      $res = $this->model->add($_POST['table'], $cols, $values);
+      $res = $this->model->add($_POST, $_GET, $_FILES);
 
       header('Location: /admin/panel');
     }
@@ -93,36 +74,8 @@ class Controller_Admin extends Controller
     function action_edit()
     {
       $this->ADMIN();
-      $cols = [];
-      $values = [];
 
-      foreach ($_POST as $key => $value) {
-        if ($key != 'table' && $key != 'id') {
-          array_push($cols, $key);
-          array_push($values, '"'.$value.'"');
-        }
-      }
-
-      if (isset($_FILES['img'])) {
-        $uploaddir = 'uploads/';
-        $uploadfile = $uploaddir . basename($_FILES['img']['name']);
-        move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile);
-        array_push($cols, 'img');
-        array_push($values, '"'.$_FILES['img']['name'].'"');
-      }
-
-      $arr = [];
-      foreach ($cols as $col_key => $col_value) {
-        foreach ($values as $val_key => $val_value) {
-          if ($col_key == $val_key) {
-            array_push($arr, "$col_value = $val_value");
-          }
-        }
-      }
-
-      $data = implode(', ', $arr);
-
-      $this->model->update($_POST['table'], $_POST['id'], $data);
+      $this->model->update($_POST, $_GET, $_FILES);
 
       header('Location: /admin/panel');
     }

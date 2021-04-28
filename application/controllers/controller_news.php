@@ -19,11 +19,6 @@ class Controller_News extends Controller
     function action_comments()
     {
       $data = $this->model->get_comments($_GET['id']);
-
-      foreach ($data['comments'] as $key => $comment) {
-        $data['comments'][$key]['user'] = $this->model->get_user_name($comment['user'])['name'];
-      }
-
       $this->view->generate('news_comments_view.php', 'template_view.php', $data);
     }
 
@@ -34,18 +29,7 @@ class Controller_News extends Controller
         die();
       }
 
-      $cols = array_merge(array_keys($_POST), array_keys($_GET));
-      $values = array_merge(array_values($_POST), array_values($_GET));
-
-      foreach ($values as $key => $value) {
-        $values[$key] = "'$value'";
-      }
-
-      $cols = implode(', ', $cols);
-      $values = implode(', ', $values);
-
-      $this->model->add_comment($cols, $values);
-
+      $this->model->add_comment($_POST, $_GET);
       $news = $_POST['news'];
       header("Location: /news/comments?id=$news");
     }
